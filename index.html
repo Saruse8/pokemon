@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A data-driven Pokémon evolution decision helper.">
+  <title>Should I Evolve This Pokémon?</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="hero">
+      <p class="eyebrow">Pokémon Case</p>
+      <h1>Should I evolve this Pokémon?</h1>
+      <p class="intro">Choose a Pokémon to compare it with its next evolution. The recommendation uses the battle stats supplied in the case dataset.</p>
+    </header>
+
+    <section class="picker-card" aria-labelledby="picker-title">
+      <div>
+        <label id="picker-title" for="pokemonSearch">Find a Pokémon</label>
+        <p class="hint">Search by name or Pokédex number.</p>
+      </div>
+      <div class="search-wrap">
+        <input id="pokemonSearch" list="pokemonOptions" placeholder="e.g. Pikachu or 25" autocomplete="off">
+        <datalist id="pokemonOptions"></datalist>
+        <button id="checkButton" type="button">Check evolution</button>
+      </div>
+      <p id="searchError" class="error" role="alert" aria-live="polite"></p>
+    </section>
+
+    <section id="result" class="result hidden" aria-live="polite">
+      <div id="decisionBanner" class="decision-banner"></div>
+      <div id="comparison" class="comparison"></div>
+      <div id="statSection" class="stats-panel"></div>
+      <div class="method-card">
+        <h2>How the recommendation works</h2>
+        <p>If a next evolution exists, the site compares total base battle stats (HP, Attack, Defense, Special Attack, Special Defense and Speed). It recommends evolving when at least one next evolution has a higher total. If no next evolution exists in the dataset, the Pokémon is treated as a final form.</p>
+        <p class="note">This is a simple case-study heuristic. The dataset does not contain level requirements, moves, held items, friendship or game-specific evolution conditions.</p>
+      </div>
+    </section>
+
+    <footer>
+      <p>Data: supplied Pokémon case spreadsheet. Images: PokéAPI sprites repository.</p>
+    </footer>
+  </main>
+  <script src="data/pokemon-data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
