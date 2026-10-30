@@ -95,7 +95,14 @@ function render(p) {
     ? `<h2>Yes — evolving improves the battle stats.</h2><p>${pretty(best.name)} gains ${gain} total base-stat points compared with ${pretty(p.name)}.</p>`
     : `<h2>No — the next form does not improve total battle stats.</h2><p>The strongest next option changes total base stats by ${gain}.</p>`;
 
-  comparison.innerHTML = pokemonCard(p, 'Current') + pokemonCard(best, nextForms.length > 1 ? 'Best next option' : 'Next evolution');
+  comparison.innerHTML = pokemonCard(p, 'Current') + pokemonCard(
+    best,
+    nextForms.length > 1
+      ? (nextForms.filter(x => bst(x) === bst(best)).length > 1
+          ? 'One of the best next options'
+          : 'Best next option')
+      : 'Next evolution'
+  );
   statsPanel.innerHTML = statsComparison(p, best) + (nextForms.length > 1
     ? `<div class="branch-note">This Pokémon has ${nextForms.length} possible next evolutions in the dataset: ${nextForms.map(x => `${pretty(x.name)} (BST ${bst(x)})`).join(', ')}. The comparison above uses the option with the highest total base stats.</div>`
     : '');

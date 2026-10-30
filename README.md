@@ -21,7 +21,7 @@ Total base stats = HP + Attack + Defense + Special Attack + Special Defense + Sp
 - `index.html` – page structure
 - `styles.css` – responsive styling
 - `app.js` – search, evolution matching and recommendation logic
-- `data/pokemon-data.js` – processed data from the supplied `pokemon.xlsx`
+- `pokemon-data.js` – processed data from the supplied `pokemon.xlsx`
 
 Only canonical species rows (`id == species_id`) are used for evolution logic so alternate/Mega forms are not incorrectly treated as evolutionary stages.
 
@@ -54,4 +54,4 @@ Replace the placeholders after publishing:
 
 ## Data note
 
-The processed dataset is committed locally in `data/pokemon-data.js`, so the decision functionality does not depend on a live data API. Only artwork is loaded externally.
+The processed dataset is committed locally in `pokemon-data.js`, so the decision functionality does not depend on a live data API. Only artwork is loaded externally.
